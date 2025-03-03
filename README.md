@@ -44,6 +44,10 @@ A technology consulting firm is adapting a cloud architecture for its software a
      --name jenkins-server \
      jenkins/jenkins:lts
      ```
+   - Added Jenkins to docker group. This will grant all docker priviledges to jenkins user.
+     ```
+     sudo usermod -aG docker jenkins
+     ```
    - Logged on to jenkins' WebGUI configuration page at `http://hostIP:8080` to configure the jenkins server
    - Entered the jenkins container and retrieved the initial password at: **_`/var/jenkins_home/secrets/initialAdminPassword`_** to create a "First Admin User"
      ```
@@ -93,6 +97,8 @@ A technology consulting firm is adapting a cloud architecture for its software a
 
    **_Objective:_** Connect Jenkins to the version control system for source code management. <br>
    
-   **_Steps:_*** <br>
-   - Created a Github [repository](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy.git) specifically meant for this project. This repository is also used by the developers of the ecommerce website to maintain versions of the website.
+   **_Steps:_** <br>
+   
+   - Created a Github [repository](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy.git) specifically meant for this project. This repository is also shared by the developers of the ecommerce website to maintain versions of the website.
+   - Went to the repository _`Settings -> Webhooks -> Add webhook`_
    - 
