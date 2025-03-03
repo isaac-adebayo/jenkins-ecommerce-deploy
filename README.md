@@ -105,6 +105,10 @@ A technology consulting firm is adapting a cloud architecture for its software a
    
    **_Steps:_** <br>
    
-   - Created a Github [repository](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy.git) specifically meant for this project. This repository is also shared by the developers of the ecommerce website to maintain versions of the website.
-   - Went to the repository _`Settings -> Webhooks -> Add webhook`_
+   - Created a Github [repository](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy.git) specifically meant for this project. It contains the _`Dockerfile`_ for building the _`jenkins-ecommerce-nginx`_ image. This repository is also shared by the developers of the ecommerce website to maintain versions of the website.
+     
+   - Went to the repository _`Settings -> Webhooks -> Add webhook`_ and made the below settings:
+       - Payload URL = "http://51.20.55.166:8080/github-webhook/"
+       - Content type = "application/json"
+       - And left other settings on default.
    - 
