@@ -44,14 +44,14 @@ A technology consulting firm is adapting a cloud architecture for its software a
      --name jenkins-server \
      jenkins/jenkins:lts
      ```
-   - Logged in to the jenkins container and retrieved the initial password at: **_`/var/jenkins_home/secrets/initialAdminPassword`_**
+   - Logged on to jenkins' WebGUI configuration page at `http://hostIP:8080` to configure the jenkins server
+   - Entered the jenkins container and retrieved the initial password at: **_`/var/jenkins_home/secrets/initialAdminPassword`_** to create a "First Admin User"
      ```
      docker exec -it jenkins-server bash
      ```
      ```
      cat /var/jenkins_home/secrets/initialAdminPassword
      ```
-   - Visited jenkins' WebGUI configuration page at `http://hostIP:8080` to configure the jenkins server
    - Installed the 'Suggested plugins'
    - Created a new pipeline job with _'Github hook trigger for GitSCM'_ enabled and having the below script:
      ```
