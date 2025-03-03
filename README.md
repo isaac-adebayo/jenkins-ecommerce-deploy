@@ -27,6 +27,10 @@ A technology consulting firm is adapting a cloud architecture for its software a
      ```
      ./install-docker.sh
      ```
+     `Added the current user to docker group`
+     ```
+     sudo usermod -aG docker $USER
+     ```
    - Created a 'jenkins_network'
      ```
      docker network create jenkins_network
