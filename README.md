@@ -30,6 +30,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
      `Added the current user to docker group`
      ```
      sudo usermod -aG docker $USER
+     newgrp docker
      ```
    - Created a 'jenkins-network'
      ```
@@ -55,12 +56,10 @@ A technology consulting firm is adapting a cloud architecture for its software a
      sudo usermod -aG docker root
      newgrp docker
      ```
-   - Logged on to jenkins' WebGUI configuration page at `http://hostIP:8080` to configure the jenkins server
+   - Logged on to jenkins' WebGUI configuration page at `http://hostIP:8080` to configure the jenkins server:
    - Entered the jenkins container and retrieved the initial password at: **_`/var/jenkins_home/secrets/initialAdminPassword`_** to create a "First Admin User"
      ```
      docker exec -it jenkins-server bash
-     ```
-     ```
      cat /var/jenkins_home/secrets/initialAdminPassword
      ```
    - Installed the 'Suggested plugins'
