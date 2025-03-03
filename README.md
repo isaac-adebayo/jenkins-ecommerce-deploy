@@ -17,7 +17,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
    
    **_Steps:_**
    - Logged in to the AWS console and created an EC2 instance and allowed port "8080" in the inbound rule of the _Security Group_ settings
-   - Installed docker engine on the EC2 instance. Created this script [install-docker.sh](https://github.com/isaac-adebayo/jenkins-projects/blob/main/Automating-Deployment-of-an-ECommerce-Website/install-docker.sh) in the home directoy and executed the script to install the docker engine on the EC2 instance:
+   - Installed docker engine on the EC2 instance. Created this script [install-docker.sh](install-docker.sh) in the home directoy and executed the script to install the docker engine on the EC2 instance:
      
      `Modified the permission of the script`
      ```
