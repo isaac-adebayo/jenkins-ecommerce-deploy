@@ -31,7 +31,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
      ```
      sudo usermod -aG docker $USER
      ```
-   - Created a 'jenkins_network'
+   - Created a 'jenkins-network'
      ```
      docker network create jenkins_network
      ```
