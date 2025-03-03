@@ -33,7 +33,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
      ```
    - Created a 'jenkins-network'
      ```
-     docker network create jenkins_network
+     docker network create jenkins-network
      ```
    - Pulled the jenkins image and ran the container with the below settings:
      
