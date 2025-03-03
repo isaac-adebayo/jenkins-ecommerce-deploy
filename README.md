@@ -63,7 +63,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
    
         stage('Connect To Github') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/isaac-adebayo/jenkins-scm.git']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/isaac-adebayo/jenkins-ecommerce-deploy.git']])
             }
         }
         stage('Build Docker Image, Dockerfile in Github repo') {
