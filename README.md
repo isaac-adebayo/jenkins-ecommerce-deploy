@@ -35,11 +35,11 @@ A technology consulting firm is adapting a cloud architecture for its software a
      ```
      docker network create jenkins-network
      ```
-   - Pulled the jenkins image and ran the container with the below settings:
+   - Pulled the jenkins image and ran the container as root user with the below settings:
      
      `Created a '_jenkins_home_' volumme for jenkins data retention, and bind the required docker volumes for jenkins to be able to run docker commands using the docker engine installed on the host (EC2). Added the jenkins container to the 'jenkins_network' created`
      ```
-     docker run -d \
+     docker run -d -u root \
      -v jenkins_home:/var/jenkins_home \
      -v /var/run/docker.sock:/var/run/docker.sock \
      -v /usr/bin/docker:/usr/bin/docker \
@@ -48,9 +48,12 @@ A technology consulting firm is adapting a cloud architecture for its software a
      --name jenkins-server \
      jenkins/jenkins:lts
      ```
-   - Added Jenkins to docker group. This will grant all docker priviledges to jenkins user.
+   - Logged in to the 'jenkins-server' container's bash, created a 'docker' group and added the 'root' to docker group.
      ```
-     sudo usermod -aG docker jenkins
+     docker exec -it jenkins-server bash
+     sudo groupadd docker
+     sudo usermod -aG docker root
+     newgrp docker
      ```
    - Logged on to jenkins' WebGUI configuration page at `http://hostIP:8080` to configure the jenkins server
    - Entered the jenkins container and retrieved the initial password at: **_`/var/jenkins_home/secrets/initialAdminPassword`_** to create a "First Admin User"
