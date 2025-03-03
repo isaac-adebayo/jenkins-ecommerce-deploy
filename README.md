@@ -90,7 +90,9 @@ A technology consulting firm is adapting a cloud architecture for its software a
       }
      ```
 2. **_Source Code Management Repository Integration_** <br>
+
    **_Objective:_** Connect Jenkins to the version control system for source code management. <br>
-   **_Steps:_***
-   - Created a Github [repository]() specifically meant for this project. This repository is also used by the developers of the ecommerce website to maintain versions of the website.
+   
+   **_Steps:_*** <br>
+   - Created a Github [repository](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy.git) specifically meant for this project. This repository is also used by the developers of the ecommerce website to maintain versions of the website.
    - 
