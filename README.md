@@ -174,4 +174,8 @@ A technology consulting firm is adapting a cloud architecture for its software a
         }
      }
    }
+
+5. _**Testing**_
+
+   The goal of this project being continous integration, continous deployment, and to ensure the scalability and reliability of the web applications was achieved at the end of the project. The Jenkins server setup was able to build, deploy and push container to docker hub registry whenever it detects changes in the Github repository hosting the web application artifacts. The web application was accessible at: http://hostIP:8081
    
