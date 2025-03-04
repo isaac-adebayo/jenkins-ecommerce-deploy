@@ -112,9 +112,9 @@ A technology consulting firm is adapting a cloud architecture for its software a
 
    - Logged in to the Jenkins web GUI and activated the _"`Githbub hook trigger for GitSCM polling`"_ in the _"`Configure`"_ tab of the pipeline
    
-   - The Github [repository](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy.git) specifically meant for this project ontains the _`Dockerfile`_ for building the _`jenkins-ecommerce-nginx`_ image. This repository is also shared by the developers of the ecommerce website to maintain versions of the website.
+   - This Github [repository](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy.git) specifically meant for this project ontains the _`Dockerfile`_ for building the _`jenkins-ecommerce-nginx`_ image. This repository is also shared by the developers of the ecommerce website to maintain versions of the website.
      
-   - Went to the repository _`Settings -> Webhooks -> Add webhook`_ and added a new webhook with the below settings:
+   - Added a new webhook to the Github's repository:  _`Settings -> Webhooks -> Add webhook`_. The Webhook was congigured with the below settings:
        - Payload URL = "http://hostIP:8080/github-webhook/"
        - Content type = "application/json"
        - And left other settings on default.
