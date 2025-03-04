@@ -66,7 +66,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
      cat /var/jenkins_home/secrets/initialAdminPassword
      ```
    - Installed the 'Suggested plugins'
-   - Created a new pipeline job with _'Github hook trigger for GitSCM'_ enabled and containing below steps:
+   - Created a new pipeline job containing below steps:
      ```
      pipeline {
 
