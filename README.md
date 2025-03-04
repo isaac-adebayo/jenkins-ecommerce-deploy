@@ -13,6 +13,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
   - Live demonstration of the CI/CD pipeline.
 
 #### _Project Components_
+
 1. **_Jenkins Server Setup_** <br>
 
    **_Objective:_** Configure Jenkins serveer for CI/CD pipeline automation. <br>
@@ -102,6 +103,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
         }
       }
      ```
+     
 3. **_Source Code Management Repository Integration_** <br>
 
    **_Objective:_** Connect Jenkins to the version control system for source code management. <br>
@@ -110,10 +112,66 @@ A technology consulting firm is adapting a cloud architecture for its software a
 
    - Logged in to the Jenkins web GUI and activated the _"`Githbub hook trigger for GitSCM polling`"_ in the _"`Configure`"_ tab of the pipeline
    
-   - Created a Github [repository](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy.git) specifically meant for this project. It contains the _`Dockerfile`_ for building the _`jenkins-ecommerce-nginx`_ image. This repository is also shared by the developers of the ecommerce website to maintain versions of the website.
+   - The Github [repository](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy.git) specifically meant for this project ontains the _`Dockerfile`_ for building the _`jenkins-ecommerce-nginx`_ image. This repository is also shared by the developers of the ecommerce website to maintain versions of the website.
      
-   - Went to the repository _`Settings -> Webhooks -> Add webhook`_ and made the below settings:
+   - Went to the repository _`Settings -> Webhooks -> Add webhook`_ and added a new webhook with the below settings:
        - Payload URL = "http://hostIP:8080/github-webhook/"
        - Content type = "application/json"
        - And left other settings on default.
-4. 
+
+4. **_Regigistry Push of the Docker Image_**
+
+   **_Objective:_** Automate the process of pushing the created docker image for the web application to a container registry such as docker hub.
+
+   **_Steps:_**
+
+   - Installed 'Docker pipeline' plugin in the Jenkins server: _`Manage Jenkins -> Plugins -> Available plugins`_
+   - Created a global credential used for loggin in to Docker: _`Manage Jenkins -> Plugins -> Credentials`_
+   - Updated the pipelines to include the steps to push the image to docker hub:
+   ```
+   pipeline {
+
+    agent any
+
+    environment {     
+        DOCKERHUB_CREDENTIALS= credentials('docker-hub-credentials')     
+    }
+
+    stages {
+
+       stage('Connect To Github') {
+           steps {
+               checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/isaac-adebayo/jenkins-ecommerce-deploy.git']])
+           }
+       }
+       stage('Build Docker Image, Dockerfile in Github repo') {
+           steps {
+                sh 'docker build -t jenkins-ecomm-nginx:latest .'
+                sh 'docker tag jenkins-ecomm-nginx:latest isaacreg/jenkins-ecomm-nginx:latest'
+           }
+       }
+       stage('Run Docker Container') {
+           steps {
+                    sh '''
+                       container_name="ecommerce-container"
+                       container_id=$(docker ps -q -a -f name=$container_name)
+                       if [ "$container_id" ]; then
+                         echo "Container $container_name is already running. Stopping container..."
+                         docker stop $container_id
+                       else
+                         echo "Container $container_name is not running. Starting container..."
+                       fi
+                   '''
+                   sh 'docker run --rm -itd --name ecommerce-container -p 8081:80 jenkins-ecomm-nginx:latest'
+           }
+       }
+      stage ('Push image to docker hub') {
+            steps {
+                sh 'docker logout'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'docker push isaacreg/jenkins-ecomm-nginx:latest'
+            }
+        }
+     }
+   }
+   
