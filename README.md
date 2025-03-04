@@ -5,9 +5,11 @@ A technology consulting firm is adapting a cloud architecture for its software a
 
 #### _Project Deliverables_
 ##### Documentation:
+
   - Detailed documentation for each Jenkins component setup.
   - Explanation of security measures implemented at each step.
 ##### Demonstration:
+
   - Live demonstration of the CI/CD pipeline.
 
 #### _Project Components_
@@ -16,6 +18,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
    **_Objective:_** Configure Jenkins serveer for CI/CD pipeline automation. <br>
    
    **_Steps:_**
+   
    - Logged in to the AWS console and created an EC2 instance and allowed port "8080" in the inbound rule of the _Security Group_ settings
    - Installed docker engine on the EC2 instance. Created this script [install-docker.sh](install-docker.sh) in the home directoy and executed the script to install the docker engine on the EC2 instance:
      
@@ -99,11 +102,13 @@ A technology consulting firm is adapting a cloud architecture for its software a
         }
       }
      ```
-2. **_Source Code Management Repository Integration_** <br>
+3. **_Source Code Management Repository Integration_** <br>
 
    **_Objective:_** Connect Jenkins to the version control system for source code management. <br>
    
    **_Steps:_** <br>
+
+   - Logged in to the Jenkins web GUI and activated the _"`Githbub hook trigger for GitSCM polling`"_ in the _"`Configure`"_ tab of the pipeline
    
    - Created a Github [repository](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy.git) specifically meant for this project. It contains the _`Dockerfile`_ for building the _`jenkins-ecommerce-nginx`_ image. This repository is also shared by the developers of the ecommerce website to maintain versions of the website.
      
@@ -111,4 +116,4 @@ A technology consulting firm is adapting a cloud architecture for its software a
        - Payload URL = "http://hostIP:8080/github-webhook/"
        - Content type = "application/json"
        - And left other settings on default.
-3. 
+4. 
