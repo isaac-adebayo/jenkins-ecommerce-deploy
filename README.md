@@ -78,7 +78,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
         }
         stage('Build Docker Image, Dockerfile in Github repo') {
             steps {
-             sh 'docker build -t jenkins-ecomm-nginx:1.0 .'
+             sh 'docker build -t jenkins-ecomm-nginx:latest .'
             }
         }
         stage('Run Docker Container') {
@@ -93,7 +93,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
                     echo "Container $container_name is not running. Starting container..."
                 fi
                 '''
-             sh 'docker run --rm -itd --name ecommerce-container -p 8081:80 jenkins-ecomm-nginx:1.0'
+             sh 'docker run --rm -itd --name ecommerce-container -p 8081:80 jenkins-ecomm-nginx:latest'
             }
           }
         }
