@@ -66,7 +66,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
      cat /var/jenkins_home/secrets/initialAdminPassword
      ```
    - Installed the 'Suggested plugins'
-   - Created a new pipeline job containing below steps:
+   - Created a new pipeline job containing below steps, in the steps, the Jenkins connects to a Github repository clone the repository into its workspace, build an image using a Dockerfile available in the repository and run a contain from the built image:
      ```
      pipeline {
 
