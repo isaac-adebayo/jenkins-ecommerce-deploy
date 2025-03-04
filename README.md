@@ -52,8 +52,8 @@ A technology consulting firm is adapting a cloud architecture for its software a
    - Entered the Jenkins container's bash, created a 'docker' group and added the 'root' to docker group.
      ```
      docker exec -it jenkins-server bash
-     sudo groupadd docker
-     sudo usermod -aG docker root
+     groupadd docker
+     usermod -aG docker root
      newgrp docker
      ```
    - Logged on to Jenkins' WebGUI configuration page at `http://hostIP:8080` to configure the Jenkins server:
