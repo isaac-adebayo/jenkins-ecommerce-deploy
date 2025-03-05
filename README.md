@@ -101,6 +101,13 @@ A technology consulting firm is adapting a cloud architecture for its software a
              sh 'docker run -d --name ecommerce-container -p 8081:80 jenkins-ecomm-nginx:latest'
             }
           }
+         stage ('Push image to docker hub') {
+              steps {
+                       sh 'docker logout'
+                       sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                       sh 'docker push isaacreg/jenkins-ecomm-nginx:latest'
+             }
+          }
         }
       }
      ```
