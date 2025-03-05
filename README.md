@@ -93,11 +93,12 @@ A technology consulting firm is adapting a cloud architecture for its software a
                 if [ "$container_id" ]; then
                     echo "Container $container_name is already running. Stopping container..."
                     docker stop $container_id
+                    docker rm $container_id
                 else
                     echo "Container $container_name is not running. Starting container..."
                 fi
                 '''
-             sh 'docker run --rm -itd --name ecommerce-container -p 8081:80 jenkins-ecomm-nginx:latest'
+             sh 'docker run -d --name ecommerce-container -p 8081:80 jenkins-ecomm-nginx:latest'
             }
           }
         }
