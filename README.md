@@ -20,7 +20,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
    
    **_Steps:_**
    
-   - Logged in to the AWS console and created an EC2 instance and allowed port "8080" in the inbound rule of the _Security Group_ settings
+   - Logged in to the AWS console and created an EC2 instance (Ubuntu 22.04) and allowed port "8080" and "80801" in the inbound rule of the _Security Group_ settings
    - Installed docker engine on the EC2 instance. Created this script [install-docker.sh](install-docker.sh) in the home directoy and executed the script to install the docker engine on the EC2 instance:
      
      `Modified the permission of the script`
@@ -35,6 +35,10 @@ A technology consulting firm is adapting a cloud architecture for its software a
      ```
      sudo usermod -aG docker $USER
      newgrp docker
+     ```
+   - Installed Java 21 (used by Jenkins)
+     ```
+     sudo apt install openjdk-21-jdk
      ```
    - Created a 'jenkins-network'
      ```
