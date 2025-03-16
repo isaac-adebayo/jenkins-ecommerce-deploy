@@ -71,7 +71,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
      cat /var/jenkins_home/secrets/initialAdminPassword
      ```
    - Installed the 'Suggested plugins'
-   - Created a new pipeline job and configured the jenkins to use the [_Jenkinsfile_](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy/blob/main/Jenkinsfile) available in this repository to build the [_ecommerce-website_](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy/tree/main/ecommerce-website) file into nginx container using the [_Dockerfile_](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy/blob/main/Dockerfile) in this repo, deploy the service by running the container and uploading the image to [_dockerhub_](https://hub.docker.com/repository/docker/isaacreg/jenkins-ecomm-nginx/general)
+   - Created a new pipeline job and configured the jenkins to use the [_Jenkinsfile_](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy/blob/main/Jenkinsfile) available in this repository to build the [_ecommerce-website_](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy/tree/main/ecommerce-website) file into nginx container using the [_Dockerfile_](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy/blob/main/Dockerfile) in this repo, added Github login credential to the configuration and configured Jenkins to deploy the ecommerce website by running the container and also uploading the image to [_dockerhub_](https://hub.docker.com/repository/docker/isaacreg/jenkins-ecomm-nginx/general)
 
      
 3. **_Source Code Management Repository Integration_** <br>
