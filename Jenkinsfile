@@ -15,7 +15,7 @@ pipeline {
     }
     stage('Build Docker Image, Dockerfile in Github repo') {
         steps {
-             sh 'docker build -t jenkins-ecomm-nginx:${BUILD_ID}'
+             sh 'docker build -t jenkins-ecomm-nginx:${BUILD_ID} .'
              sh 'docker tag jenkins-ecomm-nginx:latest isaacreg/jenkins-ecomm-nginx:${BUILD_ID}'
         }
     }
