@@ -97,7 +97,7 @@ A technology consulting firm is adapting a cloud architecture for its software a
 
    - Installed 'Docker pipeline' plugin in the Jenkins server: _`Manage Jenkins -> Plugins -> Available plugins`_
    - Created a global credential (Credentials ID: "docker-hub-credentials") used for loggin in to Docker Hub: _`Manage Jenkins -> Plugins -> Credentials`_
-   - Updated the [Pipeline]((https://github.com/isaac-adebayo/jenkins-ecommerce-deploy/blob/main/Jenkinsfile) ) to include the steps to push the image to docker hub:
+   - Updated the [Pipeline](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy/blob/main/Jenkinsfile) to include the steps to push the image to docker hub:
 
 5. _**Testing**_
 
