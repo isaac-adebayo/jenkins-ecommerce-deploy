@@ -71,43 +71,8 @@ A technology consulting firm is adapting a cloud architecture for its software a
      cat /var/jenkins_home/secrets/initialAdminPassword
      ```
    - Installed the 'Suggested plugins'
-   - Created a new pipeline job containing below steps, in the steps, Jenkins connects to a Github repository, clone the repository into its workspace, build an image using a Dockerfile available in the repository and run a container from the built image:
-     ```
-     pipeline {
+   - Created a new pipeline job and configured the jenkins to use the [_Jenkinsfile_](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy/blob/main/Jenkinsfile) available in this repository to build the [_ecommerce-website_](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy/tree/main/ecommerce-website) file into nginx container using the [_Dockerfile_](https://github.com/isaac-adebayo/jenkins-ecommerce-deploy/blob/main/Dockerfile) in this repo, deploy the service by running the container and uploading the image to [_dockerhub_](https://hub.docker.com/repository/docker/isaacreg/jenkins-ecomm-nginx/general)
 
-     agent any
-
-     stages {
-   
-        stage('Connect To Github') {
-            steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/isaac-adebayo/jenkins-ecommerce-deploy.git']])
-            }
-        }
-        stage('Build Docker Image, Dockerfile in Github repo') {
-            steps {
-             sh 'docker build -t jenkins-ecomm-nginx:latest .'
-            }
-        }
-        stage('Run Docker Container') {
-            steps {
-             sh '''
-                container_name="ecommerce-container"
-                container_id=$(docker ps -q -a -f name=$container_name)
-                if [ "$container_id" ]; then
-                    echo "Container $container_name is already running. Stopping container..."
-                    docker stop $container_id
-                    docker rm $container_id
-                else
-                    echo "Container $container_name is not running. Starting container..."
-                fi
-                '''
-             sh 'docker run -d --name ecommerce-container -p 8081:80 jenkins-ecomm-nginx:latest'
-            }
-          }
-        }
-      }
-     ```
      
 3. **_Source Code Management Repository Integration_** <br>
 
