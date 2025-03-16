@@ -15,7 +15,7 @@ pipeline {
     }
     stage('Build Docker Image, Dockerfile in Github repo') {
         steps {
-             sh 'docker build -t jenkins-ecomm-nginx:${BUILD_ID}.'
+             sh 'docker build -t jenkins-ecomm-nginx:${BUILD_ID}'
              sh 'docker tag jenkins-ecomm-nginx:latest isaacreg/jenkins-ecomm-nginx:${BUILD_ID}'
         }
     }
@@ -31,14 +31,14 @@ pipeline {
                       echo "Container $container_name is not running. Starting container..."
                     fi
                 '''
-                sh 'docker run --rm -itd --name ecommerce-container -p 8081:80 jenkins-ecomm-nginx:latest'
+                sh 'docker run --rm -itd --name ecommerce-container -p 8081:80 jenkins-ecomm-nginx:${BUILD_ID}'
         }
     }
    stage ('Push image to docker hub') {
          steps {
              sh 'docker logout'
              sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-             sh 'docker push isaacreg/jenkins-ecomm-nginx:latest'
+             sh 'docker push isaacreg/jenkins-ecomm-nginx:${BUILD_ID}'
          }
      }
   }
