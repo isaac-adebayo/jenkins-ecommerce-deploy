@@ -42,4 +42,12 @@ pipeline {
          }
      }
   }
+ Post {
+     success {
+        echo 'Pipeline completed successfully'
+     }
+     Failure {
+        echo 'Pipeline failed'
+     }
+ }
 }
